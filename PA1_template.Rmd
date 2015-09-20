@@ -40,6 +40,12 @@ meanStepsPerInterval <- aggregate(steps ~ interval, data=activity, FUN=mean)
 plot(meanStepsPerInterval$interval, meanStepsPerInterval$steps, type ="l", main="Mean Steps per Interval", ylab="Mean # of Steps", xlab="Daily Intervals (5m)")
 ```
 
+Find interval with the maximum number of steps taken on average
+```{r}
+meanStepsPerInterval[meanStepsPerInterval$steps == max(meanStepsPerInterval$steps),]
+```
+
+
 ## Imputing missing values
 Calculate the number of missing values in the data set
 ```{r}

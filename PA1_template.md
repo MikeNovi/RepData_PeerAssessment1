@@ -52,6 +52,18 @@ plot(meanStepsPerInterval$interval, meanStepsPerInterval$steps, type ="l", main=
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
+Find interval with the maximum number of steps taken on average
+
+```r
+meanStepsPerInterval[meanStepsPerInterval$steps == max(meanStepsPerInterval$steps),]
+```
+
+```
+##     interval    steps
+## 104      835 206.1698
+```
+
+
 ## Imputing missing values
 Calculate the number of missing values in the data set
 
@@ -71,7 +83,7 @@ stepsPerDay <- aggregate(steps ~ date, data=activityDelta, FUN=sum, na.rm=TRUE)
 hist(stepsPerDay$steps, main="Total Steps per Day", xlab="Total # of Steps per Day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
 Calculate the mean steps per day (ignoring NA values)
 
 ```r
@@ -103,4 +115,4 @@ activityByDayType <- aggregate(steps ~ interval + dayType, data=activityDelta, m
 ggplot(activityByDayType, aes(interval, steps))+geom_line()+facet_wrap(~dayType, ncol=1)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
